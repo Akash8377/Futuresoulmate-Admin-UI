@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.inner-html ol {
+  list-style: decimal;
+}
+.inner-html ul {
+  list-style: disc;
+}
+
+/* Base list styling */
+.inner-html ol,
+.inner-html ul {
+  margin-left: 0;
+  padding-left: 24px; /* Standard indentation */
+}
+
+/* Nested lists under <li> */
+.inner-html li > ul,
+.inner-html li > ol {
+  margin-left: 0;
+  padding-left: 24px; /* Indent nested lists */
+}
+
+/* Remove extra margin for paragraphs inside lists */
+.inner-html li p.ds-markdown-paragraph {
+  margin-bottom: 4px; /* Tighten spacing */
+}

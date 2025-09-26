@@ -1,0 +1,83 @@
+.hide-scrollbar {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+
+/* -------------------------------- */
+/* Sidebar Base Styles */
+.bg-neutral-900 {
+    background-color: #1e293b; /* Dark gray */
+  }
+  
+  .text-neutral-400 {
+    color: #9ca3af; /* Lighter gray */
+  }
+  
+  .text-white {
+    color: #ffffff;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .gap-2 {
+    gap: 0.5rem;
+  }
+  
+  .font-light {
+    font-weight: 300;
+  }
+  
+  .px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .rounded-sm {
+    border-radius: 0.125rem;
+  }
+  
+  .text-base {
+    font-size: 1rem;
+  }
+  
+  .hover\:bg-neutral-700:hover {
+    background-color: #374151; /* Darker gray on hover */
+  }
+  
+  .active\:bg-neutral-600:active {
+    background-color: #4b5563; /* Slightly lighter gray on active */
+  }
+  
+  .overflow-y-auto {
+    overflow-y: auto;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .pl-6 {
+    padding-left: 1.5rem;
+  }
+  
+  /* Add smooth transitions */
+  .transition {
+    transition: all 0.3s ease;
+  }
+  
