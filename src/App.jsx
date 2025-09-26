@@ -1,41 +1,44 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-  useNavigate,
 } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Toast } from "./components/common/toast/Toast.jsx";
 
 const Login = lazy(() => import("./components/admin/Login.jsx"));
 const Layout = lazy(() => import("./components/shared/Layout.jsx"));
 const Dashboard = lazy(() => import("./pages/Dashboard.jsx"));
 const Users = lazy(() => import("./pages/users/Users.jsx"));
-const Subscription = lazy(()=> import("./pages/subscriptions/SubscriptionManager.jsx"))
-const PlanManager = lazy(()=> import("./pages/subscription_plan/PlanManager.jsx"))
+const Subscription = lazy(() => import("./pages/subscriptions/SubscriptionManager.jsx"));
+const PlanManager = lazy(() => import("./pages/subscription_plan/PlanManager.jsx"));
 
 function App() {
-  const isAuthenticated = !!localStorage.getItem("token");
-  console.log("isAuthenticated", isAuthenticated);
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
   return (
-    <Router>
-      <Toast/>
-      <Suspense>
+    <Router basename="/admin">
+      <Toast />
+      <Suspense fallback={<div>Loading...</div>}>
         <Routes>
+          {/* Public route must come first */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Root index redirect */}
           <Route
-            path="/"
+            index
             element={
               isAuthenticated ? (
-                <Navigate to="/dashboard" />
+                <Navigate to="/dashboard" replace />
               ) : (
-                <Navigate to="/login" />
+                <Navigate to="/login" replace />
               )
             }
           />
 
-          {/* Public route for login */}
-          <Route path="/login" element={<Login />} />
+          {/* Protected routes */}
           {isAuthenticated ? (
             <Route element={<Layout />}>
               <Route path="dashboard" element={<Dashboard />} />
@@ -44,7 +47,7 @@ function App() {
               <Route path="plans" element={<PlanManager />} />
             </Route>
           ) : (
-            <Route path="*" element={<Navigate to="/login" />} />
+            <Route path="*" element={<Navigate to="/login" replace />} />
           )}
         </Routes>
       </Suspense>
