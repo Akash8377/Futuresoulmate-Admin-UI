@@ -2,7 +2,7 @@
 import React from "react";
 import { FaTimes, FaPrint } from "react-icons/fa";
 
-const Modal = ({ isOpen, onClose, title, children }) => {
+const Modal = ({ isOpen, onClose, title, children,print=false, size=null }) => {
   if (!isOpen) return null;
 
   const handlePrint = () => {
@@ -31,8 +31,8 @@ const Modal = ({ isOpen, onClose, title, children }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white text-black w-full max-w-4xl mx-4 p-6 rounded-lg shadow-lg">
+    <div className={`fixed inset-0 flex  items-center justify-center bg-black bg-opacity-50 z-50 `}>
+      <div className={`bg-white text-black max-w-4xl mx-4 p-6 rounded-lg shadow-lg ${size==="sm"?"w-1/3":"w-full"}`}>
         <div className="flex justify-between items-center mb-4">
           {title && (
             <h2 className="modal-title text-2xl font-bold">
@@ -40,13 +40,13 @@ const Modal = ({ isOpen, onClose, title, children }) => {
             </h2>
           )}
           <div className="flex gap-5">
-            <button
+            {print ? (<button
               onClick={handlePrint}
               className="text-gray-500 hover:text-gray-700"
               title="Print"
             >
               <FaPrint size={20} />
-            </button>
+            </button>):null}
             <button
               onClick={onClose}
               className="text-gray-500 hover:text-gray-700"

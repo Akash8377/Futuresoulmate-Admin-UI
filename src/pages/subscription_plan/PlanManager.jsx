@@ -125,7 +125,7 @@ const PlanManager = () => {
         />
       </Modal>
 
-      <Modal isOpen={isDeleteConfirmOpen} onClose={() => setIsDeleteConfirmOpen(false)} title="Confirm Delete">
+      <Modal isOpen={isDeleteConfirmOpen} onClose={() => setIsDeleteConfirmOpen(false)} title="Confirm Delete" size="sm">
         <div className="p-4">
           <p className="mb-4">
             Are you sure you want to delete the plan "{planToDelete?.name}"?
