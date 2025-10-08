@@ -14,6 +14,7 @@ const Dashboard = lazy(() => import("./pages/Dashboard.jsx"));
 const Users = lazy(() => import("./pages/users/Users.jsx"));
 const Subscription = lazy(() => import("./pages/subscriptions/SubscriptionManager.jsx"));
 const PlanManager = lazy(() => import("./pages/subscription_plan/PlanManager.jsx"));
+const ServiceManager = lazy(()=>import("./pages/plan_service/ServiceManager.jsx"))
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -45,6 +46,7 @@ function App() {
               <Route path="users" element={<Users />} />
               <Route path="subscriptions" element={<Subscription />} />
               <Route path="plans" element={<PlanManager />} />
+              <Route path="services" element={<ServiceManager />} />
             </Route>
           ) : (
             <Route path="*" element={<Navigate to="/login" replace />} />

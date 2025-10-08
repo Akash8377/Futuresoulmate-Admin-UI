@@ -27,6 +27,12 @@ export const DASHBOARD_SIDEBAR_LINKS = [
         icon: <RiMoneyDollarCircleLine />,
       },
       {
+        key: "services",
+        label: "Subscription Services",
+        path: "/services",
+        icon: <RiMoneyDollarCircleLine />,
+      },
+      {
         key: "subscriptions",
         label: "All Subscriptions",
         path: "/subscriptions",
