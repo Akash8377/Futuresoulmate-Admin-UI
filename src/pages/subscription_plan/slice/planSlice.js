@@ -72,6 +72,7 @@ export const deletePlan = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await api.delete(`/plans/${id}`);
+      toast.success("Plan deleted successfully");
       return id;
     } catch (error) {
       return rejectWithValue(error.response.data);
